@@ -211,7 +211,7 @@ if st.button('Predict Survival', key="predict_button"):
     })
 
     # Normalize the input data based on original dataset normalization
-    input_normalized = (input_data - min_vals[input_data.columns]) \ (max_vals[input_data.columns] - min_vals[input_data.columns])
+    input_normalized = (input_data - min_vals[input_data.columns]) / (max_vals[input_data.columns] - min_vals[input_data.columns])
 
     # Get predicted probabilities
     survival_probability = classifier.predict_proba(input_normalized)[0][0]  # probability for class 0 (survival)
