@@ -178,3 +178,41 @@ ax.set_ylabel('True Positive Rate')
 ax.set_title('Receiver Operating Characteristic Curve')
 ax.legend()
 st.pyplot(fig)
+
+# ----------- Real-time Prediction Form ------------
+st.header("🩺 Predict Heart Failure Risk (Real-Time)")
+
+# Collect user input features
+age = st.number_input('Age', min_value=0, max_value=130, value=60)
+creatinine_phosphokinase = st.number_input('Creatinine Phosphokinase (mcg/L)', min_value=0, max_value=8000, value=500)
+ejection_fraction = st.number_input('Ejection Fraction (%)', min_value=10, max_value=100, value=38)
+platelets = st.number_input('Platelets (kiloplatelets/mL)', min_value=0, max_value=1000000, value=265000)
+serum_creatinine = st.number_input('Serum Creatinine (mg/dL)', min_value=0.0, max_value=10.0, value=1.1)
+serum_sodium = st.number_input('Serum Sodium (mEq/L)', min_value=100, max_value=150, value=137)
+time = st.number_input('Follow-up Period (days)', min_value=0, max_value=400, value=130)
+
+# When the user clicks the button
+if st.button('Predict Survival'):
+    # Create a DataFrame from the inputs
+    input_data = pd.DataFrame({
+        'age': [age],
+        'creatinine_phosphokinase': [creatinine_phosphokinase],
+        'ejection_fraction': [ejection_fraction],
+        'platelets': [platelets],
+        'serum_creatinine': [serum_creatinine],
+        'serum_sodium': [serum_sodium],
+        'time': [time]
+    })
+
+    # Normalize the input data based on original dataset normalization
+    input_normalized = (input_data - x.min()) / (x.max() - x.min())
+
+    # Make prediction
+    prediction = classifier.predict(input_normalized)
+
+    # Show result
+    if prediction[0] == 0:
+        st.success("✅ The patient is likely to **Survive**.")
+    else:
+        st.error("⚠️ The patient is at risk of a **Death Event**.")
+
