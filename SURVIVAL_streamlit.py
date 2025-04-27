@@ -243,7 +243,9 @@ X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_
 # In[93]:
 
 
-knn = KNeighborsClassifier() k_range = list(range(1,25)) k_scores = []
+knn = KNeighborsClassifier()
+k_range = list(range(1, 25))
+k_scores = []
 for k in k_range:
 knn = KNeighborsClassifier(n_neighbors=k) knn.fit(X_train, y_train) k_scores.append(knn.score(X_train, y_train))
 print(np.round(k_scores, 4))
