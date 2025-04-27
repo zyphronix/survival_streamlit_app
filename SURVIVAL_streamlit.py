@@ -82,7 +82,6 @@ st.pyplot(fig)
 df.drop(['diabetes', 'sex'], axis=1, inplace=True)
 
 # Normalizing data
-for(feature_name)
 def normalize(df):
     result = df.copy()
     for feature_name in df.columns:
