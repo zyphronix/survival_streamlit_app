@@ -82,6 +82,7 @@ st.pyplot(fig)
 df.drop(['diabetes', 'sex'], axis=1, inplace=True)
 
 # Normalizing data
+for(feature_name)
 def normalize(df):
     result = df.copy()
     for feature_name in df.columns:
@@ -93,6 +94,11 @@ def normalize(df):
 data = normalize(df)
 st.subheader("Normalized Data Sample")
 st.dataframe(data.head(10))
+
+# Compute & store original min/max for each feature
+feature_cols = df.columns.tolist()
+min_vals = df[feature_cols].min()
+max_vals = df[feature_cols].max()
 
 # PCA
 st.subheader("PCA Analysis")
@@ -205,7 +211,7 @@ if st.button('Predict Survival', key="predict_button"):
     })
 
     # Normalize the input data based on original dataset normalization
-    input_normalized = (input_data - x.min()) / (x.max() - x.min())
+    input_normalized = (input_data - min_vals[input_data.columns]) \ (max_vals[input_data.columns] - min_vals[input_data.columns])
 
     # Get predicted probabilities
     survival_probability = classifier.predict_proba(input_normalized)[0][0]  # probability for class 0 (survival)
