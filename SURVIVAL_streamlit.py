@@ -29,11 +29,6 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 # libraries for roc curve
 from sklearn.metrics import roc_curve, roc_auc_score
 
-# Update for the deprecated warning
-from matplotlib_inline.backend_inline import set_matplotlib_formats
-set_matplotlib_formats('pdf', 'svg')
-
-
 
 # In[17]:
 
