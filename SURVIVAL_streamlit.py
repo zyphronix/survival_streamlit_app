@@ -41,7 +41,7 @@ set_matplotlib_formats('pdf', 'svg')
 import pandas as pd
 
 # Provide the full path to your CSV file (escaped backslashes)
-file_path = 'C:\\Users\\priya\\Machine Learning\\heart_failure_clinical_records_dataset.csv'
+file_path = 'heart_failure_clinical_records_dataset.csv'
 
 # Read the CSV file into a DataFrame
 df = pd.read_csv(file_path)
