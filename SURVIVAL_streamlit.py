@@ -30,7 +30,15 @@ st.write("Shape of data:", df.shape)
 st.dataframe(df.head(10))
 
 st.header("Dataset Info")
-st.write(df.info())
+st.markdown("""
+This dataset is from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Heart+failure+clinical+records).  
+It contains **299** patient records collected during a heart failure follow-up study, with **13 clinical features**.
+
+- The **`time`** field represents the number of days of follow-up for each patient.
+- The **`DEATH_EVENT`** field indicates whether the patient died during the follow-up (1 = death, 0 = survived).
+
+This dataset is commonly used to predict the risk of death in patients who have experienced heart failure.
+""")
 
 st.header("Target Value Counts")
 st.write(df['DEATH_EVENT'].value_counts())
